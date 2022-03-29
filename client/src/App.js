@@ -1,36 +1,35 @@
-import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import Home from './pages/Home';
-import SingleThought from './pages/SingleThought';
-import Header from './components/Header';
-import Footer from './components/Footer';
-
-const client = new ApolloClient({
-  uri: '/graphql',
-  cache: new InMemoryCache(),
-});
+import React, { useState } from 'react';
+// import Nav from './components/Nav';
+// import About from './components/About';
+import Gallery from './components/Gallery';
 
 function App() {
+  const [categories] = useState([
+    {
+      name: 'menu',
+      description: 'Menu',
+    },
+    { name: 'gallery', description: 'Enjoy images of our food, drinks, and dining area!' },
+  ]);
+
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
+  const [contactSelected, setContactSelected] = useState(false);
+
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Route exact path="/">
-              <Home />
-            </Route>
-            {/* Create a route to display a single thought's comments based on its `thoughtId` provided in the URL */}
-            <Route exact path="/thoughts/:thoughtId">
-              <SingleThought />
-            </Route>
-          </div>
-          <Footer />
-        </div>
-      </Router>
-    </ApolloProvider>
+    <div>
+      <Nav
+        categories={categories}
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+        contactSelected={contactSelected}
+        setContactSelected={setContactSelected}
+      ></Nav>
+      <main>
+            <Gallery currentCategory={currentCategory}></Gallery>
+
+      </main>
+    </div>
   );
 }
 
