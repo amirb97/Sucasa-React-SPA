@@ -1,5 +1,4 @@
 import React from 'react';
-// Import `<Link>` component from React Router for internal hyperlinks
 import { Link } from 'react-router-dom';
 
 const ThoughtList = ({ thoughts, title }) => {
@@ -11,24 +10,27 @@ const ThoughtList = ({ thoughts, title }) => {
     <div>
       <h3>{title}</h3>
       {thoughts &&
-        thoughts.map((thought) => (
+        thoughts.map(thought => (
           <div key={thought._id} className="card mb-3">
-            <h4 className="card-header bg-primary text-light p-2 m-0">
-              {thought.thoughtAuthor} <br />
-              <span style={{ fontSize: '1rem' }}>
-                had this thought on {thought.createdAt}
-              </span>
-            </h4>
-            <div className="card-body bg-light p-2">
-              <p>{thought.thoughtText}</p>
+            <p className="card-header">
+              <Link
+                to={`/profile/${thought.username}`}
+                style={{ fontWeight: 700 }}
+                className="text-light"
+              >
+                {thought.username}
+              </Link>{' '}
+              thought on {thought.createdAt}
+            </p>
+            <div className="card-body">
+              <Link to={`/thought/${thought._id}`}>
+                <p>{thought.thoughtText}</p>
+                <p className="mb-0">
+                  Reactions: {thought.reactionCount} || Click to{' '}
+                  {thought.reactionCount ? 'see' : 'start'} the discussion!
+                </p>
+              </Link>
             </div>
-            {/* Create a link to this thought's page to view its comments using `<Link>` component */}
-            <Link
-              className="btn btn-primary btn-block btn-squared"
-              to={`/thoughts/${thought._id}`}
-            >
-              Join the discussion on this thought.
-            </Link>
           </div>
         ))}
     </div>
