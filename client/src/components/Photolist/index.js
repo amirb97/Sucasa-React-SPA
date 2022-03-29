@@ -7,116 +7,142 @@ const PhotoList = ({ category }) => {
 
   const [photos] = useState([
     {
-      name: 'Grocery aisle',
-      category: 'commercial',
+      name: 'Page 1',
+      category: 'foodmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Grocery booth',
-      category: 'commercial',
+      name: 'Page 2',
+      category: 'foodmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Building exterior',
-      category: 'commercial',
+      name: 'Page 3',
+      category: 'foodmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Restaurant table',
-      category: 'commercial',
+      name: 'Page 4',
+      category: 'foodmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Cafe interior',
-      category: 'commercial',
+      name: 'Page 1',
+      category: 'drinkmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Cat green eyes',
-      category: 'portraits',
+      name: 'Page 2',
+      category: 'drinkmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Green parrot',
-      category: 'portraits',
+      name: 'Page 3',
+      category: 'drinkmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Yellow macaw',
-      category: 'portraits',
+      name: 'Page 4',
+      category: 'drinkmenu',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Pug smile',
-      category: 'portraits',
+      name: 'Baja Mango Margarita',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Pancakes',
-      category: 'food',
+      name: 'Fish Tacos',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Burrito',
-      category: 'food',
+      name: 'Patio',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Scallop pasta',
-      category: 'food',
+      name: 'Restaurant',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Burger',
-      category: 'food',
+      name: 'Bar',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Fruit bowl',
-      category: 'food',
+      name: 'Beer and Margarita',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Green river',
-      category: 'landscape',
+      name: 'Party Platter',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Docks',
-      category: 'landscape',
+      name: 'Tortilla Soup',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Panoramic village by sea',
-      category: 'landscape',
+      name: 'Cadillac Margarita',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Domestic landscape',
-      category: 'landscape',
+      name: 'Deep Fried Ice Cream',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Park bench',
-      category: 'landscape',
+      name: 'Main Lobby',
+      category: 'gallery',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
+    }
+    ,
+    {
+      name: 'Mojito',
+      category: 'gallery',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
+    },
+    {
+      name: 'Patio',
+      category: 'gallery',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
+    }
+    ,
+    {
+      name: 'Private Dining',
+      category: 'gallery',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
+    },
+    {
+      name: 'Tres Leches',
+      category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     }
@@ -137,7 +163,7 @@ const PhotoList = ({ category }) => {
       <div className="flex-row">
         {currentPhotos.map((image, i) => (
           <img
-            src={require(`../../assets/small/${category}/${i}.jpg`).default}
+            src={require(`../../assets/${category}/${i}.jpg`).default}
             alt={image.name}
             className="img-thumbnail mx-1"
             onClick={() => toggleModal(image, i)}
