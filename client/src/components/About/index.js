@@ -1,6 +1,8 @@
 function About() {
     return (
-        <div>test</div>
+        <div>
+            <p>tester</p>
+        </div>
     )
 }
 

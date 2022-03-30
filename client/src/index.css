@@ -43,7 +43,7 @@ header {
   background: var(--darker);
 }
 
-nav li {
+nav li a {
   cursor: pointer;
   font-style: italic;
   border-top: 2px solid var(--darker);
@@ -51,11 +51,15 @@ nav li {
   padding: 5px;
   transition: all 1s;
   font-size: 1rem;
+  text-decoration: none;
+  color: var(--light);
 }
 
-.nav li:hover {
+.nav li a:hover {
   border-top: 2px solid var(--primary);
   border-bottom: 2px solid var(--primary);
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .logo {

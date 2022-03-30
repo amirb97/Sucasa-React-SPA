@@ -1,45 +1,42 @@
-import React, { useEffect } from 'react';
-import { capitalizeFirstLetter } from '../../utils/helpers';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-//<img src={require("../../assets/logo/logo.jpg").default} />
+import Auth  from '../../utils/auth';
 
-function Nav(props) {
-  const {
-    categories = [],
-    setCurrentCategory,
-    currentCategory
- 
-  } = props;
-
-  useEffect(() => {
-    document.title = capitalizeFirstLetter(currentCategory.name);
-  }, [currentCategory]);
+const Nav = () => {
+  const logout = e => {
+    e.preventDefault();
+    Auth.logout();
+  }
 
   return (
     <header className="col-12 text-white">
       <div className="col-2 p-3">
-        <a href="/">
-        <img src={require("../../assets/logo/logo_transparent.png").default} className='logo'/>
-        </a>
+        <Link to="/">
+          <img src={require("../../assets/logo/logo_transparent.png").default} className='logo'/>
+        </Link>
       </div>
       <nav className='col-8 nav justify-content-around p-3'>
         <ul className='flex-row navbar-nav nav-fill w-100'>
-          {categories.map((category) => (
-            <li
-              className={`mx-4 nav-item ${
-                currentCategory.name === category.name && 'navActive'
-                }`}
-              key={category.name}
-            >
-              <span
-                onClick={() => {
-                  setCurrentCategory(category);
-                }}
-              >
-                {capitalizeFirstLetter(category.name)}
-              </span>
-            </li>
-          ))}
+          <li className="mx-4 nav-item">
+            <Link to='/'>About</Link>
+          </li>
+
+          <li className="mx-4 nav-item">
+            <Link to='/eat'>Eat</Link>
+          </li>
+
+          <li className="mx-4 nav-item">
+            <Link to='/drink'>Drink</Link>
+          </li>
+
+          <li className="mx-4 nav-item">
+            <Link to='/gallery'>Gallery</Link>
+          </li>
+
+          <li className="mx-4 nav-item">
+            <Link to='/events'>Events</Link>
+          </li>  
         </ul>
       </nav>
       <div className='col-2 text-center'>

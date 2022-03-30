@@ -1,49 +1,54 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
 import Nav from './components/Nav';
-import About from './components/About';
-import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 
+import About from './components/About';
+import Gallery from './components/Gallery';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
-  const [categories] = useState([
-    {
-      name: 'about',
-      description: 'Welcome to Su Casa!'
-    },
-    {
-      name: 'foodmenu',
-      description: 'Our take on modern dishes that capture the latin flavor!\nInspired by dishes and tastes from not just Mexico, but all of South America!',
-    },
-    {
-      name: 'drinkmenu',
-      description: 'Drink Menu',
-    },
-    { 
-      name: 'gallery',
-       description: 'Enjoy images of our food, drinks, and dining area!'
-    },
-    {
-      name: 'events',
-      description: ''
-    }
-  ]);
-
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-
   return (
-    <div className='d-flex flex-column min-vh-100'>
-      <Nav
-        categories={categories}
-        setCurrentCategory={setCurrentCategory}
-        currentCategory={currentCategory}
-        
-        
-      ></Nav>
-      <main>
-            <Gallery currentCategory={currentCategory}></Gallery>
-      </main>
-      <Footer />
-    </div>
+    <ApolloProvider client={client}>
+      <Router>
+        <div className='d-flex flex-column min-vh-100'>
+          <Nav></Nav>
+            <main className='container'>
+              <Switch>
+                <Route exact path='/' component={About} />
+                <Route exact path='/gallery' component={Gallery} />
+              </Switch>
+            </main>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
   );
 }
 
