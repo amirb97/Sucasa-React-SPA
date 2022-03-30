@@ -100,7 +100,7 @@ function Gallery() {
     <section className='text-center'>
       <h1>Gallery</h1>
       <p>Enjoy some pictures of our family restaurant's food, drinks, and seating areas!</p>
-      <div className="flex-row">
+      <div className="flex-row justify-content-around">
         {photos.map((image, i) => (
           <img
             src={require(`../../assets/gallery/${i}.jpg`).default}
