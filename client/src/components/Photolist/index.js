@@ -8,49 +8,49 @@ const PhotoList = ({ category }) => {
   const [photos] = useState([
     {
       name: 'Page 1',
-      category: 'foodmenu',
+      category: 'eat',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 2',
-      category: 'foodmenu',
+      category: 'eat',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 3',
-      category: 'foodmenu',
+      category: 'eat',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 4',
-      category: 'foodmenu',
+      category: 'eat',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 1',
-      category: 'drinkmenu',
+      category: 'drink',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 2',
-      category: 'drinkmenu',
+      category: 'drink',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 3',
-      category: 'drinkmenu',
+      category: 'drink',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
       name: 'Page 4',
-      category: 'drinkmenu',
+      category: 'drink',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
@@ -128,7 +128,7 @@ const PhotoList = ({ category }) => {
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'
     },
     {
-      name: 'Patio',
+      name: 'Patio Bench',
       category: 'gallery',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ultricie'

@@ -12,8 +12,8 @@ const Footer = () => {
         <div className="socials">
           <h2>Connect:</h2>
           <p>Follow us on social media</p>
-          <a href="https://www.facebook.com/sucasabarandgrill/" target="_blank" class="fa fa-facebook"></a>
-          <a href="https://www.instagram.com/sucasabarandgrill/?hl=en" target="_blank" class="fa fa-instagram"></a>
+          <a href="https://www.facebook.com/sucasabarandgrill/" target="_blank" className="fa fa-facebook"></a>
+          <a href="https://www.instagram.com/sucasabarandgrill/?hl=en" target="_blank" className="fa fa-instagram"></a>
         </div>
         <div className="hours">
           <h2>Hours:</h2>

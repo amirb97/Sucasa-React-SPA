@@ -11,11 +11,11 @@ function App() {
       description: 'Welcome to Su Casa!'
     },
     {
-      name: 'foodmenu',
+      name: 'eat',
       description: 'Our take on modern dishes that capture the latin flavor!\nInspired by dishes and tastes from not just Mexico, but all of South America!',
     },
     {
-      name: 'drinkmenu',
+      name: 'drink',
       description: 'Drink Menu',
     },
     { 
