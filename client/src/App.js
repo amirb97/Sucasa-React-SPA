@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 
 import About from './components/About';
 import Gallery from './components/Gallery';
+import Eat from './components/Eat';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -43,6 +44,7 @@ function App() {
               <Switch>
                 <Route exact path='/' component={About} />
                 <Route exact path='/gallery' component={Gallery} />
+                <Route exact path='/eat' component={Eat} />
               </Switch>
             </main>
           <Footer />
