@@ -13,7 +13,7 @@ const Nav = () => {
     <header className="col-12 text-white">
       <div className="col-2 p-3">
         <Link to="/">
-          <img src={require("../../assets/logo/logo_transparent.png").default} className='logo'/>
+          <img src={require("../../assets/logo/logo_transparent.png").default} className='logo' alt='logo'/>
         </Link>
       </div>
       <nav className='col-8 nav justify-content-around p-3'>
