@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 function App() {
   const [categories] = useState([
     {
-      name: 'about us',
+      name: 'about',
       description: 'Welcome to Su Casa!'
     },
     {
@@ -31,7 +31,7 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
 
   return (
-    <div>
+    <div className='d-flex flex-column min-vh-100'>
       <Nav
         categories={categories}
         setCurrentCategory={setCurrentCategory}
