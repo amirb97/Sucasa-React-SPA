@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
 import Nav from './components/Nav';
-// import About from './components/About';
+import About from './components/About';
 import Gallery from './components/Gallery';
+import Footer from './components/Footer';
 
 function App() {
   const [categories] = useState([
     {
+      name: 'about us',
+      description: 'Welcome to Su Casa!'
+    },
+    {
       name: 'foodmenu',
-      description: 'Food Menu',
+      description: 'Our take on modern dishes that capture the latin flavor!\nInspired by dishes and tastes from not just Mexico, but all of South America!',
     },
     {
       name: 'drinkmenu',
       description: 'Drink Menu',
     },
-    { name: 'gallery', description: 'Enjoy images of our food, drinks, and dining area!' },
+    { 
+      name: 'gallery',
+       description: 'Enjoy images of our food, drinks, and dining area!'
+    },
+    {
+      name: 'events',
+      description: ''
+    }
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
@@ -30,6 +42,7 @@ function App() {
       <main>
             <Gallery currentCategory={currentCategory}></Gallery>
       </main>
+      <Footer />
     </div>
   );
 }

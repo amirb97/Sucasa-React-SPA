@@ -5,10 +5,10 @@ main {
 }
 :root {
   --primary: #8c54ff;
-  --secondary: #f3a847;
+  --secondary: #47aef3;
   --tertiary: #b12704;
   --light: #fafafa;
-  --dark: #000000;
+  --dark: #474747;
   --darker: #111111;
   --error: rgb(228, 46, 1);
   --spacing-one: calc(1rem * 0.5);
@@ -89,11 +89,38 @@ a:hover {
 }
 
 header {
-  background: var(--dark);
+  background: var(--darker);
 }
 
 header a {
   color: var(--light);
+}
+
+footer {
+  background: var(--darker);
+  position: fixed;
+  bottom: 0;
+  width: 100%
+}
+
+footer h2 {
+  font-size: 1.2rem;
+}
+
+footer p {
+  font-size: 0.8rem;
+}
+
+footer li {
+  font-size: 0.8rem;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
 }
 
 button {
