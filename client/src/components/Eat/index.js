@@ -35,7 +35,7 @@ function Eat() {
       <div className="flex-row justify-content-around">
         {photos.map((image, i) => (
           <img
-            src={require(`../../assets/foodmenu/${i}.jpg`).default}
+            src={require(`../../assets/eat/${i}.jpg`).default}
             alt={image.name}
             className="img-thumbnail mx-1"
             key={image.name}
