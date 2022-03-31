@@ -24,57 +24,30 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const ADD_COMMENT = gql`
+  mutation addComment($commentText: String!) {
+    addComment(commentText: $commentText) {
       _id
-      thoughtText
+      commentText
       createdAt
       username
-      reactionCount
-      reactions {
+      replyCount
+      replies {
         _id
       }
     }
   }
 `;
 
-export const ADD_REACTION = gql`
-  mutation addReaction($thoughtId: ID!, $reactionBody: String!) {
-    addReaction(thoughtId: $thoughtId, reactionBody: $reactionBody) {
+export const ADD_REPLIES = gql`
+  mutation addReply($commentId: ID!, $replyBody: String!) {
+    addReply(commentId: $commentId, replyBody: $replyBody) {
       _id
-      reactionCount
-      reactions {
+      replyCount
+      replies {
         _id
-        reactionBody
+        replyBody
         createdAt
-        username
-      }
-    }
-  }
-`;
-
-export const ADD_FRIEND = gql`
-  mutation addFriend($id: ID!) {
-    addFriend(friendId: $id) {
-      _id
-      username
-      friendCount
-      friends {
-        _id
-        username
-      }
-    }
-  }
-`;
-
-export const REMOVE_FRIEND = gql`
-  mutation removeFriend($id: ID!) {
-    removeFriend(id: $id) {
-      _id
-      username
-      friends {
-        _id
         username
       }
     }
