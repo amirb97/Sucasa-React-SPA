@@ -7,6 +7,7 @@ export const QUERY_COMMENTS = gql`
       commentText
       createdAt
       username
+      eventId
       replyCount
       replies {
         _id
@@ -25,6 +26,7 @@ export const QUERY_COMMENT = gql`
       commentText
       createdAt
       username
+      eventId
       replyCount
       replies {
         _id

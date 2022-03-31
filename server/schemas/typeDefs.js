@@ -13,6 +13,7 @@ const typeDefs = gql`
     commentText: String
     createdAt: String
     username: String
+    eventId: String
     replyCount: Int
     replies: [Reply]
   }
@@ -39,7 +40,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addComment(commentText: String!): Comment
+    addComment(commentText: String!, eventId: String!): Comment
     addReply(commentId: ID!, replyBody: String!): Comment
   }
 `;

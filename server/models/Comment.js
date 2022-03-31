@@ -19,6 +19,10 @@ const commentSchema = new Schema(
       type: String,
       required: true
     },
+    eventId: {
+      type: String,
+      required: true
+    },
     replies: [replySchema]
   },
   {

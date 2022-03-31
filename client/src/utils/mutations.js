@@ -25,12 +25,13 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_COMMENT = gql`
-  mutation addComment($commentText: String!) {
-    addComment(commentText: $commentText) {
+  mutation addComment($commentText: String!, $eventId: String!) {
+    addComment(commentText: $commentText, eventId: $eventId) {
       _id
       commentText
       createdAt
       username
+      eventId
       replyCount
       replies {
         _id
