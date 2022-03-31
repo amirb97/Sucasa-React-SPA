@@ -7,7 +7,7 @@ export const QUERY_COMMENTS = gql`
       commentText
       createdAt
       username
-      repllyCount
+      replyCount
       replies {
         _id
         createdAt
@@ -47,28 +47,6 @@ export const QUERY_USER = gql`
         commentText
         createdAt
         replyCount
-      }
-    }
-  }
-`;
-
-export const QUERY_ME = gql`
-  {
-    me {
-      _id
-      username
-      email
-      comments {
-        _id
-        commentText
-        createdAt
-        replyCount
-        replies {
-          _id
-          createdAt
-          replyBody
-          username
-        }
       }
     }
   }
