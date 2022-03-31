@@ -10,6 +10,7 @@ const Modal = ({ onClose, currentPhoto }) => {
         <img
           src={require(`../../assets/${category}/${index}.jpg`).default}
           alt="current category"
+          width='500'
         />
         <p>{description}</p>
         <button type="button" onClick={onClose}>
