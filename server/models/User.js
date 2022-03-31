@@ -20,16 +20,10 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
-    thoughts: [
+    comments: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
-      }
-    ],
-    friends: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Comment'
       }
     ]
   },
