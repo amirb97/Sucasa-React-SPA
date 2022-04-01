@@ -14,8 +14,8 @@ const resolvers = {
         .select('-__v -password')
         .populate('comments');
     },
-    comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
+    comments: async (parent, { eventId }) => {
+      const params = eventId ? { eventId } : {};
       return Comment.find(params).sort({ createdAt: -1 });
     },
     comment: async (parent, { _id }) => {

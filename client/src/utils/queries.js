@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_COMMENTS = gql`
-  query comments($username: String) {
-    comments(username: $username) {
+  query comments($eventId: String) {
+    comments(eventId: $eventId) {
       _id
       commentText
       createdAt
