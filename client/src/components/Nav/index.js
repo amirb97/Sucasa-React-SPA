@@ -40,7 +40,15 @@ const Nav = () => {
         </ul>
       </nav>
       <div className='col-2 text-center'>
-        <button id="logout" className='btn btn-outline-light me-2 login'>logout</button>
+        {Auth.loggedIn() ? (
+          <>
+            <a href='/' className='btn btn-outline-light' onClick={logout}>Logout</a>
+          </>
+        ) : (
+          <>
+            <Link to='/login' className='btn btn-outline-light text-decoration-none'>Login</Link>
+          </>
+        )}
       </div>
     </header>
   );

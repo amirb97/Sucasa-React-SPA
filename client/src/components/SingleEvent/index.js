@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 import CommentForm from '../CommentForm';
-import  SingleComment from '../SingleComment';
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
