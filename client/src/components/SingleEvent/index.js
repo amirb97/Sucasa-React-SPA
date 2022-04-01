@@ -24,14 +24,22 @@ const SingleEvent = (props) => {
     return (
         <div>
             <div>
-                <h2 className='text-center m-3'>Leave a comment below or scroll down to see other users comments and reply!</h2>
-                <CommentForm eventId={eventId} />
+                {Auth.loggedIn() ? (
+                    <>
+                      <h2 className='text-center m-3'>Leave a comment below or scroll down to see other users comments and reply!</h2>
+                      <CommentForm eventId={eventId} />
+                    </>
+                ) : (
+                    <>
+                      <h2 className='text-center m-3'>Scroll down to see other users comments and replies! Login to leave your own feedback!</h2>
+                    </>
+                )}
             </div>
             {comments.map(comment => (
-                <div className='border shadow border-dark p-3 m-3' key={comment._id}>
+                <div className='border shadow border-dark rounded p-3 m-3' key={comment._id}>
                     <h3>{comment.username}  on  {comment.createdAt}</h3>
                     <p>{comment.commentText}</p>
-                    <Link to={`/comment/${comment._id}`}>Replies:{comment.replyCount}</Link>
+                    <Link to={`/comment/${comment._id}`} className="text-decoration-none btn btn-outline-dark">Replies:{comment.replyCount}</Link>
                 </div>
             ))}
         </div>

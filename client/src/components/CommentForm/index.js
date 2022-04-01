@@ -22,7 +22,10 @@ const CommentForm = ({ eventId }) => {
 
     try {
       await addComment({
-        variables: { commentText, eventId },
+        variables: { 
+          commentText: commentText,
+          eventId: eventId.id
+        },
       });
 
       // clear form value
@@ -34,25 +37,25 @@ const CommentForm = ({ eventId }) => {
   };
 
   return (
-    <div>
+    <div className='col-10 mx-auto'>
       <p
         className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
         Character Count: {characterCount}/280
-        {error && <span className="ml-2">Something went wrong...</span>}
+        {error && <span className="m-2">Something went wrong...</span>}
       </p>
       <form
-        className="flex-row justify-center justify-space-between-md align-stretch"
+        className="flex-row justify-center"
         onSubmit={handleFormSubmit}
       >
         <textarea
           placeholder="Leave a comment on this event..."
           value={commentText}
-          className="form-input col-12 col-md-9"
+          className="form-input col-12"
           onChange={handleChange}
         ></textarea>
 
-        <button className="btn col-12 col-md-3" type="submit">
+        <button className="btn btn-outline-dark mx-auto m-2" type="submit">
           Submit
         </button>
       </form>
