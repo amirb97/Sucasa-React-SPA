@@ -26,12 +26,12 @@ const SingleEvent = (props) => {
             <div>
                 {Auth.loggedIn() ? (
                     <>
-                      <h2 className='text-center m-3'>Leave a comment below or scroll down to see other users comments and reply!</h2>
+                      <h2 className='text-center m-3'>Leave a comment below or scroll down to see other user's comments and reply!</h2>
                       <CommentForm eventId={eventId} />
                     </>
                 ) : (
                     <>
-                      <h2 className='text-center m-3'>Scroll down to see other users comments and replies! Login to leave your own feedback!</h2>
+                      <h2 className='text-center m-3'>Scroll down to see other user's comments and replies! Login to leave your own feedback!</h2>
                     </>
                 )}
             </div>

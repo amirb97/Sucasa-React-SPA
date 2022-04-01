@@ -5,7 +5,7 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_COMMENT } from '../../utils/queries';
 
-import CommentForm from '../CommentForm';
+import ReplyForm from '../ReplyForm';
 
 const SingleComment = () => {
     const commentId = useParams();
@@ -22,13 +22,19 @@ const SingleComment = () => {
 
     const replies = comment?.replies || [];
 
-    console.log(comment);
-    console.log(replies);
     return (
         <div>
             <div>
-                <h2 className='text-center m-3'>Leave a reply below or scroll down to see other users replies!</h2>
-                <CommentForm />
+                {Auth.loggedIn() ? (
+                    <>
+                      <h2 className='text-center m-3'>Leave a reply below or scroll down to see other user's replies!</h2>
+                      <ReplyForm Id={comment._id} />
+                    </>
+                ) : (
+                    <>
+                      <h2 className='text-center m-3'>Scroll down to see other user's replies! Login to leave your own feedback!</h2>
+                    </>
+                )}
             </div>
             <div className='border shadow border-dark p-3 m-3' key={comment._id}>
                 <h4>{comment.username} on {comment.createdAt}</h4>
