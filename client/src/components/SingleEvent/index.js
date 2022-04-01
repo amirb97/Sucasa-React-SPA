@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 import CommentForm from '../CommentForm';
+import  SingleComment from '../SingleComment';
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
@@ -30,7 +32,7 @@ const SingleEvent = (props) => {
                 <div className='border shadow border-dark p-3 m-3' key={comment._id}>
                     <h3>{comment.username}  on  {comment.createdAt}</h3>
                     <p>{comment.commentText}</p>
-                    <p>Replies:{comment.replyCount}</p>
+                    <Link to={`/comment/${comment._id}`}>Replies:{comment.replyCount}</Link>
                 </div>
             ))}
         </div>

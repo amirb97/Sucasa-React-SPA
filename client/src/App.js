@@ -17,6 +17,7 @@ import Eat from './components/Eat';
 import Drink from './components/Drink';
 import Events from './components/Events';
 import SingleEvent from './components/SingleEvent';
+import SingleComment from './components/SingleComment';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -51,6 +52,7 @@ function App() {
                 <Route exact path='/gallery' component={Gallery} />
                 <Route exact path='/events' component={Events} />
                 <Route exact path='/event/:id' component={SingleEvent} />
+                <Route exact path='/comment/:id' component={SingleComment} />
 
 
               </Switch>
