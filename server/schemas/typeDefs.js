@@ -43,6 +43,7 @@ const typeDefs = gql`
     addComment(commentText: String!, eventId: String!): Comment
     addReply(commentId: ID!, replyBody: String!): Comment
     deleteComment(commentId:ID!): Comment
+    deleteReply(replyId: ID!): Reply
   }
 `;
 

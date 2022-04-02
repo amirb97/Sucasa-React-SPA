@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Comment } = require('../models');
+const { User, Comment, Reply } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -74,13 +74,26 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteComment: async (parent, commentId, context) => {
+    deleteComment: async (parent, {commentId} , context) => {
       if (context.user) {
         const deletedComment = await Comment.findOneAndDelete(
-          {_id: commentId}
+          {_id: commentId },
+          { new: true, runValidators: true }
         );
-        
+
         return deletedComment;
+      }
+    
+      throw new AuthenticationError('You need to be logged in')
+    },
+    deleteReply: async (parent, {replyId} , context) => {
+      if (context.user) {
+        const deletedReply = await Reply.findOneAndDelete(
+          {_id: replyId },
+          { new: true, runValidators: true }
+        );
+
+        return deletedReply;
       }
     
       throw new AuthenticationError('You need to be logged in')
