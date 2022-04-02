@@ -6,7 +6,7 @@ import { ADD_REPLIES } from '../../utils/mutations';
 const ReplyForm = ({ Id }) => {
   const [replyBody, setBody] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [addComment, { error }] = useMutation(ADD_REPLIES);
+  const [addReply, { error }] = useMutation(ADD_REPLIES);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -19,7 +19,7 @@ const ReplyForm = ({ Id }) => {
   // submit form
   const handleFormSubmit = async (event) => {
     try {
-      await addComment({
+      await addReply({
         variables: { 
           replyBody: replyBody,
           commentId: Id

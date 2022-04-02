@@ -26,10 +26,9 @@ const SingleEvent = (props) => {
     };
 
     async function handleDeleteSubmit(commentId) {
-        //console.log(Auth.getProfile().data.username);
         try {
             await deleteComment({
-                variables:  {
+                variables: {
                     commentId
                 },
             });

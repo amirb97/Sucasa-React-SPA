@@ -5,10 +5,30 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_COMMENT } from '../../utils/queries';
 
+import { useMutation } from '@apollo/client';
+import { DELETE_REPLY } from '../../utils/mutations';
+
 import ReplyForm from '../ReplyForm';
 
 const SingleComment = () => {
     const commentId = useParams();
+    const [deleteReply, { error }] = useMutation(DELETE_REPLY);
+
+    async function handleDeleteSubmit(replyId) {
+        console.log("Comment: " + commentId.id);
+        console.log("Reply: " + replyId);
+
+        try {
+            await deleteReply({
+                variables: {
+                    commentId: commentId.id,
+                    replyId: replyId
+                },
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    };
 
     const { loading, data } = useQuery(QUERY_COMMENT, {
         variables: { id: commentId.id }
@@ -45,6 +65,22 @@ const SingleComment = () => {
                 <div className='col-8 border shadow border-dark p-3 m-3 mx-auto' key={reply._id}>
                     <h4>{reply.username} on {reply.createdAt}</h4>
                     <p>{reply.replyBody}</p>
+                    {Auth.loggedIn() ? (
+                        <>
+                            {Auth.getProfile().data.username==reply.username ? (
+                                <>
+                                  <button onClick={() => handleDeleteSubmit(reply._id)} className='btn btn-outline-danger mx-3'>Delete</button>
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            <div className='btn pe-none'>Login to edit and delete your comments!</div>
+                        </>
+                    )}
                 </div>
             ))}
         </div>
