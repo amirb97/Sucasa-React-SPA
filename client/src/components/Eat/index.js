@@ -37,7 +37,7 @@ function Eat() {
           <img
             src={require(`../../assets/eat/${i}.jpg`).default}
             alt={image.name}
-            className="img-thumbnail mx-1"
+            className="m-3"
             key={image.name}
           />
         ))}

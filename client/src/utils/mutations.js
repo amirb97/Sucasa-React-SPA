@@ -54,3 +54,24 @@ export const ADD_REPLIES = gql`
     }
   }
 `;
+
+export const DELETE_COMMENT = gql`
+  mutation deleteComment($commentId: ID!) {
+    deleteComment(commentId: $commentId) {
+      _id
+    }
+  }
+`;
+
+export const DELETE_REPLY = gql`
+  mutation deleteReply($commentId: ID!, $replyId: ID!) {
+    deleteReply(commentId: $commentId, replyId: $replyId)
+      _id
+      replyCount
+      replies{
+        _id
+        replyBody
+        username
+      }
+  }
+`;

@@ -14,8 +14,8 @@ const resolvers = {
         .select('-__v -password')
         .populate('comments');
     },
-    comments: async (parent, { username }) => {
-      const params = username ? { username } : {};
+    comments: async (parent, { eventId }) => {
+      const params = eventId ? { eventId } : {};
       return Comment.find(params).sort({ createdAt: -1 });
     },
     comment: async (parent, { _id }) => {
@@ -74,29 +74,32 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
     },
-    deleteComment: async (parent, {commentId} , context) => {
-      if (context.user) {
+    deleteComment: async (parent, { commentId }, context) => {
+      if(context.user) {
         const deletedComment = await Comment.findOneAndDelete(
-          {_id: commentId },
+          { _id: commentId },
           { new: true, runValidators: true }
         );
 
         return deletedComment;
       }
-    
-      throw new AuthenticationError('You need to be logged in')
+
+      throw new AuthenticationError("You need to be logged in!");
     },
-    deleteReply: async (parent, {replyId} , context) => {
+    deleteReply: async (parent, { commentId, replyId }, context) => {
       if (context.user) {
-        const deletedReply = await Reply.findOneAndDelete(
-          {_id: replyId },
+        const deletedReply = await Comment.findOneAndUpdate(
+          { _id: commentId },
+          {
+            $pull: { replies: { _id: replyId } }
+          },
           { new: true, runValidators: true }
         );
 
         return deletedReply;
       }
-    
-      throw new AuthenticationError('You need to be logged in')
+
+      throw new AuthenticationError("You need to be logged in!")
     }
   }
 };

@@ -33,7 +33,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    comments(username: String): [Comment]
+    comments(eventId: String): [Comment]
     comment(_id: ID!): Comment
   }
 
@@ -42,8 +42,8 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     addComment(commentText: String!, eventId: String!): Comment
     addReply(commentId: ID!, replyBody: String!): Comment
-    deleteComment(commentId:ID!): Comment
-    deleteReply(replyId: ID!): Reply
+    deleteComment(commentId: ID!): Comment
+    deleteReply(commentId: ID!, replyId: ID!): Comment
   }
 `;
 

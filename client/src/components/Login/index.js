@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+
+import Auth from '../../utils/auth';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -13,11 +17,19 @@ const Login = (props) => {
     });
   };
 
-  // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    // clear form values
+    try {
+      const { data } = await login({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
     setFormState({
       email: '',
       password: '',
@@ -25,14 +37,14 @@ const Login = (props) => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
+    <div className="justify-center m-3">
+      <div className="col-6 mx-auto">
         <div className="card">
-          <h4 className="card-header">Login</h4>
+          <h4 className="card-header text-center">Login</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
               <input
-                className="form-input"
+                className="form-input d-block m-2 mx-auto"
                 placeholder="Your email"
                 name="email"
                 type="email"
@@ -41,7 +53,7 @@ const Login = (props) => {
                 onChange={handleChange}
               />
               <input
-                className="form-input"
+                className="form-input d-block m-2 mx-auto"
                 placeholder="******"
                 name="password"
                 type="password"
@@ -49,14 +61,16 @@ const Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className="btn d-block w-100" type="submit">
+              <button className="btn d-block btn-outline-dark mx-auto" type="submit">
                 Submit
               </button>
             </form>
+
+            {error && <div>Login failed</div>}
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 };
 

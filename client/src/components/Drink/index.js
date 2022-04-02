@@ -43,7 +43,7 @@ function Drink() {
           <img
             src={require(`../../assets/drink/${i}.jpg`).default}
             alt={image.name}
-            className="img-thumbnail mx-1"
+            className="m-3"
             key={image.name}
           />
         ))}
