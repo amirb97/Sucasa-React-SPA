@@ -4,12 +4,16 @@ import { useParams } from 'react-router-dom';
 
 import CommentForm from '../CommentForm';
 
+import { useMutation } from '@apollo/client';
+import { DELETE_COMMENT } from '../../utils/mutations';
+
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_COMMENTS } from '../../utils/queries';
 
 const SingleEvent = (props) => {
     const eventId = useParams();
+    const [deleteComment, { error }] = useMutation(DELETE_COMMENT);
 
     const { loading, data } = useQuery(QUERY_COMMENTS, {
         variables: { eventId: eventId.id }
@@ -19,6 +23,19 @@ const SingleEvent = (props) => {
 
     if (loading) {
         return <div>Loading...</div>
+    };
+
+    async function handleDeleteSubmit(commentId) {
+        //console.log(Auth.getProfile().data.username);
+        try {
+            await deleteComment({
+                variables:  {
+                    commentId
+                },
+            });
+        } catch (e) {
+            console.log(e);
+        }
     };
 
     return (
@@ -40,6 +57,7 @@ const SingleEvent = (props) => {
                     <h3>{comment.username}  on  {comment.createdAt}</h3>
                     <p>{comment.commentText}</p>
                     <Link to={`/comment/${comment._id}`} className="text-decoration-none btn btn-outline-dark">Replies:{comment.replyCount}</Link>
+                    <button onClick={() => handleDeleteSubmit(comment._id)} className='btn btn-outline-danger mx-3'>Delete</button>
                 </div>
             ))}
         </div>
