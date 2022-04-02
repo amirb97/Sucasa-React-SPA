@@ -57,7 +57,22 @@ const SingleEvent = (props) => {
                     <h3>{comment.username}  on  {comment.createdAt}</h3>
                     <p>{comment.commentText}</p>
                     <Link to={`/comment/${comment._id}`} className="text-decoration-none btn btn-outline-dark">Replies:{comment.replyCount}</Link>
-                    <button onClick={() => handleDeleteSubmit(comment._id)} className='btn btn-outline-danger mx-3'>Delete</button>
+                    {Auth.loggedIn() ? (
+                        <>
+                            {Auth.getProfile().data.username==comment.username ? (
+                                <>
+                                  <button onClick={() => handleDeleteSubmit(comment._id)} className='btn btn-outline-danger mx-3'>Delete</button>
+                                </>
+                            ) : (
+                                <>
+                                </>
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            <div className='btn pe-none'>Login to edit and delete your comments!</div>
+                        </>
+                    )}
                 </div>
             ))}
         </div>
