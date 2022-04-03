@@ -75,3 +75,10 @@ export const DELETE_REPLY = gql`
       }
   }
 `;
+
+export const EDIT_COMMENT = gql `
+  mutation editComment($commentId: ID!, $commentText: String!) {
+    editComment(commentId: $commentId, commentText: $commentText)
+      _id
+      commentText
+  }`

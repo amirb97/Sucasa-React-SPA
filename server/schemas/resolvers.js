@@ -100,7 +100,20 @@ const resolvers = {
       }
 
       throw new AuthenticationError("You need to be logged in!")
-    }
+    },
+    editComment: async (parent, { commentId, commentText }, context) => {
+      if (context.user) {
+        const updatedComment = await Comment.findOneAndUpdate(
+          { _id: commentId },
+          { commentText: commentText},
+          { new: true, runValidators: true }
+        );
+
+        return updatedComment;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 

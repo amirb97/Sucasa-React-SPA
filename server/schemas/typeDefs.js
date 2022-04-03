@@ -44,6 +44,7 @@ const typeDefs = gql`
     addReply(commentId: ID!, replyBody: String!): Comment
     deleteComment(commentId: ID!): Comment
     deleteReply(commentId: ID!, replyId: ID!): Comment
+    editComment(commentId: ID!, commentText: String!): Comment
   }
 `;
 
