@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
@@ -11,9 +11,18 @@ import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_COMMENTS } from '../../utils/queries';
 
+import Modal from '../Modal';
+
 const SingleEvent = (props) => {
     const eventId = useParams();
     const [deleteComment, { error }] = useMutation(DELETE_COMMENT);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentComment, setCurrentComment] = useState();
+
+    const toggleModal = (comment) => {
+        setCurrentComment({...comment});
+        setIsModalOpen(!isModalOpen);
+    }
 
     const { loading, data } = useQuery(QUERY_COMMENTS, {
         variables: { eventId: eventId.id }
@@ -64,8 +73,9 @@ const SingleEvent = (props) => {
                         <>
                             {Auth.getProfile().data.username==comment.username ? (
                                 <>
+                                  {isModalOpen && <Modal currentComment={currentComment} onClose={toggleModal}/>}
                                   <button onClick={() => handleDeleteSubmit(comment._id)} className='btn btn-outline-danger mx-3'>Delete</button>
-                                  <button onClick={() => handleEditSubmit(comment)} className='btn btn-outline-primary'>Edit</button>
+                                  <button onClick={() => toggleModal(comment)} className='btn btn-outline-primary'>Edit</button>
                                 </>
                             ) : (
                                 <>

@@ -65,7 +65,7 @@ export const DELETE_COMMENT = gql`
 
 export const DELETE_REPLY = gql`
   mutation deleteReply($commentId: ID!, $replyId: ID!) {
-    deleteReply(commentId: $commentId, replyId: $replyId)
+    deleteReply(commentId: $commentId, replyId: $replyId) {
       _id
       replyCount
       replies{
@@ -73,12 +73,14 @@ export const DELETE_REPLY = gql`
         replyBody
         username
       }
+    }
   }
 `;
 
 export const EDIT_COMMENT = gql `
   mutation editComment($commentId: ID!, $commentText: String!) {
-    editComment(commentId: $commentId, commentText: $commentText)
+    editComment(commentId: $commentId, commentText: $commentText) {
       _id
       commentText
+    }
   }`
