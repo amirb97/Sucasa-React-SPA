@@ -37,6 +37,10 @@ const SingleEvent = (props) => {
         }
     };
 
+    async function handleEditSubmit(comment) {
+        console.log(comment);
+    };
+
     return (
         <div>
             <div>
@@ -61,6 +65,7 @@ const SingleEvent = (props) => {
                             {Auth.getProfile().data.username==comment.username ? (
                                 <>
                                   <button onClick={() => handleDeleteSubmit(comment._id)} className='btn btn-outline-danger mx-3'>Delete</button>
+                                  <button onClick={() => handleEditSubmit(comment)} className='btn btn-outline-primary'>Edit</button>
                                 </>
                             ) : (
                                 <>

@@ -65,22 +65,6 @@ const SingleComment = () => {
                 <div className='col-8 border shadow border-dark p-3 m-3 mx-auto' key={reply._id}>
                     <h4>{reply.username} on {reply.createdAt}</h4>
                     <p>{reply.replyBody}</p>
-                    {Auth.loggedIn() ? (
-                        <>
-                            {Auth.getProfile().data.username==reply.username ? (
-                                <>
-                                  <button onClick={() => handleDeleteSubmit(reply._id)} className='btn btn-outline-danger mx-3'>Delete</button>
-                                </>
-                            ) : (
-                                <>
-                                </>
-                            )}
-                        </>
-                    ) : (
-                        <>
-                            <div className='btn pe-none'>Login to edit and delete your comments!</div>
-                        </>
-                    )}
                 </div>
             ))}
         </div>
