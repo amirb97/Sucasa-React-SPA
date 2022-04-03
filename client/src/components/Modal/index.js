@@ -17,11 +17,6 @@ const Modal = ({ onClose, currentComment }) => {
   };
 
   async function handleFormSubmit(event) {
-    event.preventDefault();
-
-    console.log(_id)
-    console.log(commentText)
-
     try {
       await editComment({
         variables: {
@@ -37,9 +32,10 @@ const Modal = ({ onClose, currentComment }) => {
   return (
     <div className="modalBackdrop">
       <div className="modalContainer">
-        <div className='col-10 mx-auto'>
+        <div className='col-12 mx-auto'>
+          <h3 className='text-light text-center'>Edit your comment below!</h3>
           <p
-            className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+            className={`m-0 text-light ${characterCount === 280 || error ? 'text-error' : ''}`}
           >
             Character Count: {characterCount}/280
             {error && <span className="m-2">Something went wrong...</span>}
@@ -49,13 +45,12 @@ const Modal = ({ onClose, currentComment }) => {
             onSubmit={handleFormSubmit}
           >
             <textarea
-              placeholder="Leave a comment on this event..."
               value={commentText}
-              className="form-input col-12"
+              className="col-12 min-h-"
               onChange={handleChange}
             ></textarea>
 
-            <button className="btn btn-outline-dark mx-auto m-2" type="submit">
+            <button className="btn btn-outline-light mx-auto m-2" type="submit">
               Submit
             </button>
           </form>

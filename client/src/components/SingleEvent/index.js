@@ -46,10 +46,6 @@ const SingleEvent = (props) => {
         }
     };
 
-    async function handleEditSubmit(comment) {
-        console.log(comment);
-    };
-
     return (
         <div>
             <div>

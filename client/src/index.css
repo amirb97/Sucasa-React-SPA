@@ -130,12 +130,6 @@ li {
   max-width: 100%;
   margin: 50px auto;
   padding: 15px;
-  width: 50%;
+  width: 80%;
 
-}
-
-.modalTitle {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 25px;
 }
