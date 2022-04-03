@@ -81,4 +81,5 @@ export const EDIT_COMMENT = gql `
     editComment(commentId: $commentId, commentText: $commentText)
       _id
       commentText
-  }`
+  }
+  `;
